@@ -7,9 +7,9 @@ class Solution(object):
         for i in range(len(s)):
             if s[i] in subs:
                 p_left = s.index(s[i], p_left) + 1
-                r = max(r, len(subs))
             subs = s[p_left:i+1]
-        return max(r, len(subs))
+            r = max(r, len(subs))
+        return r
 
 if __name__ == "__main__":
     print Solution().lengthOfLongestSubstring("pwwkew")
