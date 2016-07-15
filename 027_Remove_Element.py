@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
+# You can also refer 026 Remove Duplicates from Sorted Array, 
+# using two pointer, slow pointer & traversal pointer
 
 class Solution(object):
     def removeElement(self, nums, val):
