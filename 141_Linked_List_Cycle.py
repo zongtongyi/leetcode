@@ -22,7 +22,7 @@ class Solution(object):
         if not head or not head.next: return False
 
         p1, p2 = head, head.next.next
-        while p1:
+        while p2:
             if p1 == p2: return True
 
             try:
@@ -38,6 +38,6 @@ if __name__ == "__main__":
     node2 = ListNode(6)
     node3 = ListNode(3)
     node1.next = node2
-    # node2.next = node1
+    node2.next = node1
 
     print Solution().hasCycle(node1)
