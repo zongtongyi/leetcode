@@ -22,15 +22,13 @@ class Solution(object):
         if not head or not head.next: return False
 
         p1, p2 = head, head.next.next
-        while p2:
+        while p1:
             if p1 == p2: return True
 
             try:
                 p1, p2 = p1.next, p2.next.next
             except AttributeError as e:
                 return False
-
-        #return False
 
 
 if __name__ == "__main__":
