@@ -30,7 +30,7 @@ class Solution(object):
             except AttributeError as e:
                 return False
 
-        return False
+        #return False
 
 
 if __name__ == "__main__":
