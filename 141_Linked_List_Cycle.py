@@ -21,7 +21,7 @@ class Solution(object):
         """
         if not head or not head.next: return False
 
-        p1, p2 = head, head.next.next
+        p1, p2 = head.next, head.next.next
         while p1:
             if p1 == p2: return True
 
@@ -29,6 +29,17 @@ class Solution(object):
                 p1, p2 = p1.next, p2.next.next
             except AttributeError as e:
                 return False
+
+    def hasCycle(self, head):
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast: return True
+
+        return False
+
 
 
 if __name__ == "__main__":
