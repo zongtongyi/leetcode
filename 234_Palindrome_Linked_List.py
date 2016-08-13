@@ -23,8 +23,7 @@ class Solution(object):
             slow = slow.next
             fast = fast.next.next
 
-        if fast:
-            slow = slow.next
+        slow = slow.next
 
         last = None
         while slow:
