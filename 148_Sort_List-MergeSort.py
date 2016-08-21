@@ -42,8 +42,7 @@ class Solution(object):
                 l2 = l2.next
             p = p.next
 
-        if l1: p.next = l1
-        else:  p.next = l2
+        p.next = l1 if l1 else l2
 
         return dummy.next
 
