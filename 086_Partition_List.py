@@ -44,6 +44,31 @@ class Solution(object):
 
         return before_list_head.next
 
+    def partition2(self, head, x):
+        before_list = ListNode(0)
+        after_list  = ListNode(0)
+
+        while head:
+            Node = ListNode(head.val)
+            if head.val >= x:
+                Node.next = after_list
+                after_list = Node
+            else:
+                Node.next = before_list
+                before_list = Node
+            head = head.next
+
+        final_list = ListNode(0)
+        while after_list.next:
+            Node = ListNode(after_list.val)
+            Node.next = final_list
+            final_list = Node
+
+    def partition3(self, head, x):
+        # using two lists
+        # l1 is origin list, move val>=x into l2
+        # merge l1 and l2
+        pass
 
 
 if __name__ == "__main__":
