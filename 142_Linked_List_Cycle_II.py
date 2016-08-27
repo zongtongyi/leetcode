@@ -24,9 +24,12 @@ class Solution(object):
         return None
 
     def detectCycle(self, head):
+        # First, find the first collisionSpot
         collisionSpot = self.hasCycle(head)
         if not collisionSpot: return None
 
+        # Second, find the second collisionSpot
+        # which is the joint spot
         while True:
             if collisionSpot == head: return head
 
