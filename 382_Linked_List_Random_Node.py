@@ -13,22 +13,30 @@ class ListNode(object):
         self.next = None
 
 
+import random
+
 class Solution(object):
     def __init__(self, head):
-        """
-        @param head The linked list's head.
-        Note that the head is guaranteed to be not null, so it contains at least one node.
-        :type head: ListNode
-        """
+        self.vals = []
+        p = head
+        while p:
+            self.vals.append(p.val)
+            p = p.next
+        self.len = len(self.vals)
     
     def getRandom(self):
         """
         Returns a random node's value.
         :rtype: int
         """
+        i = random.randint(0, self.len-1)
+        return self.vals[i]
 
 
+if __name__ == "__main__":
+    a = ListNode(1)
+    a.next = ListNode(2)
+    a.next.next = ListNode(3)
+    a.next.next.next = ListNode(4)
 
-# Your Solution object will be instantiated and called as such:
-# obj = Solution(head)
-# param_1 = obj.getRandom()
+    print Solution(a).getRandom()
