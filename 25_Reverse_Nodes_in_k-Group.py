@@ -15,11 +15,7 @@ class ListNode(object):
 
 class Solution(object):
     def reverseKGroup(self, head, k):
-        """
-        :type head: ListNode
-        :type k: int
-        :rtype: ListNode
-        """
+
         if not head or not head.next: return head
 
         bHead = False
@@ -52,6 +48,50 @@ class Solution(object):
                 pre = pre.next
                 i -= 1
 
+    def reverseKGroup(self, head, k):
+        if not head or not head.next: return head
+
+        dummy = ListNode(0)
+        dummy.next = head
+        pre = dummy
+
+        p = head
+        i = 0
+        while p:
+            i += 1
+            if i%k == 0:
+                pre = self.reverse(pre, p.next)
+                p = pre.next
+            else:
+                p = p.next
+
+        return dummy.next
+
+    # Use a changeless pre or dummy node, to keep the two section connected
+    # Use a changeless tail node, to break out reverse procedure
+    # Use dummy node as pre node, and always has a pre node before the beginning of sub_list
+    # the first node of sub_list is the next pre node, the pre node of next sub_list
+    # k = 3
+    # 0->1->2->3->4->5->6
+    # |           |   
+    # pre        next
+    #
+    # after calling pre = reverse(pre, next)
+    # 
+    # 0->3->2->1->4->5->6
+    #          |  |
+    #          pre next 
+    def reverse(self, pre, tail):
+        last = pre.next
+        cur  = last.next
+
+        while cur != tail:
+            last.next = cur.next
+            cur.next  = pre.next
+            pre.next  = cur
+            cur       = last.next
+
+        return last
 
 
 
@@ -62,8 +102,12 @@ if __name__ == "__main__":
     c = ListNode(3)
     d = ListNode(4)
     e = ListNode(5)
+    f = ListNode(6)
+    g = ListNode(7)
+    h = ListNode(8)
     a.next, b.next, c.next, d.next = b, c, d, e
+    e.next, f.next, g.next = f, g, h
 
-    l2 = Solution().reverseKGroup(a, 2)
+    l2 = Solution().reverseKGroup(a, 3)
     prl(l2)
 
