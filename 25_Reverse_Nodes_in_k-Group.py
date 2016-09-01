@@ -69,6 +69,7 @@ class Solution(object):
 
     # Use a changeless pre or dummy node, to keep the two section connected
     # Use a changeless tail node, to break out reverse procedure
+    # Use a changeless last node, refer sub_list head, which will be the last node after reverse
     # Use dummy node as pre node, and always has a pre node before the beginning of sub_list
     # the first node of sub_list is the next pre node, the pre node of next sub_list
     # k = 3
@@ -85,6 +86,11 @@ class Solution(object):
         last = pre.next
         cur  = last.next
 
+        # new way of reverse 
+        # 'last' node refer sub_list head at beginning
+        # 'cur' node refer 'last' next node, and
+        # always move 'cur' node to the front of sub_list
+        # In short, move 'last' next node to the front
         while cur != tail:
             last.next = cur.next
             cur.next  = pre.next
