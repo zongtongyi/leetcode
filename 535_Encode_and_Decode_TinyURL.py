@@ -9,6 +9,7 @@ class Codec:
     dict_shortUrls = {}
     alphabeat = string.ascii_letters + string.digits
     global_count = 0
+    # static class vars, it could access by using 'self' or 'Codec' class name
     prefix = "http://tinyurl.com/"
 
     def encode(self, longUrl):
@@ -28,7 +29,7 @@ class Codec:
             tiny = enco64(self.global_count)
             self.dict_longUrls[longUrl] = tiny
             self.dict_shortUrls[tiny] = longUrl
-            self.global_count += 1
+            Codec.global_count += 1
             return self.prefix + tiny
 
     def decode(self, shortUrl):
